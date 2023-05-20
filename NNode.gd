@@ -13,7 +13,7 @@ var sum :float = 0
 
 
 func activation_function(sum :float):
-	return (sum*3) / (1 + abs(sum*3))
+	return (sum*3) / (1 + abs(sum*3))+bias
 	#return tanh(sum)
 
 func calculate(inputs = []): # TODO add bias
@@ -35,3 +35,4 @@ func mutate():
 		var change = rand_range((weight_diff*max_n *-1), weight_diff*max_p) # TODO should slowly make the max/min values less propable, rather than fully disabling it suddenly
 		weights[i] += change
 		weights[i] = clamp(weights[i],-1.0,1.0)
+	bias = rand_range(-0.1,0.1)

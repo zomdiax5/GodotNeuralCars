@@ -32,7 +32,7 @@ func _create_node(previous_layer, type):
 		for node in range(0,previous_layer.size()):
 			new_node.weights.append(rand_range(-1,1))
 	
-	new_node.bias = rand_range(-1,1)
+	new_node.bias = rand_range(-0.1,0.1)
 	new_node.weights.append(rand_range(-1,1))
 	return new_node
 
