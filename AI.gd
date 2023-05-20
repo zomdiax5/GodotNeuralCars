@@ -2,6 +2,13 @@ extends KinematicBody2D
 
 onready var net :NN = $NN
 
+########################
+# TODO WHAT TO IMPROVE
+#
+# Porting to C# might give some calculation benefits
+# Add a more fun game
+#
+#########################
 var id
 
 var horizontal :float = 0
@@ -10,7 +17,7 @@ var vertical :float = 0
 func _ready() -> void:
 	randomize()
 	id = int(rand_range(-9999999,9999999))
-	net.create_net([4,10,2])
+	net.create_net([4,8,2])
 
 func map_to_value(value,maximum):
 	return (value/maximum)-0.5

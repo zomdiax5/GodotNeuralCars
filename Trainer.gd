@@ -18,7 +18,7 @@ func _ready() -> void:
 		add_child(scene)
 		scene.global_position = Vector2(rand_range(0,1280),rand_range(0,720))
 
-func _process(delta:float):
+func _physics_process(delta:float):
 	Engine.time_scale = Global.timescale
 	if timer > 7:
 		next_run()
@@ -45,13 +45,14 @@ func next_run():
 		node.global_position = Vector2(rand_range(0,1280),rand_range(0,720))
 	
 	for node in get_children():
-		#need to run again to update with brainiest brain
-		if node == best_node or rand_range(0,100) < 65: # Lets keep the winner the same to prevent unlearning
-			pass
-		else:
+		if Global.always_copy_brain and node != best_node:
+			node.net.neural_net = null 
+			node.net.neural_net = best_node.net.neural_net.duplicate()
+		if rand_range(0,100) < Global.mutation_chance and node != best_node:
 			node.net.neural_net = null 
 			node.net.neural_net = best_node.net.neural_net.duplicate()
 			node.net.mutate()
+			
 	
 	print("Starting round %s..." % run)
 	print("Previous best score: %s" % best_score)
