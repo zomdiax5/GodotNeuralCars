@@ -7,9 +7,10 @@ var value = 0
 
 var type :String
 
-var bias :float = rand_range(-0.03,0.03)
+var bias :float
 
 var sum :float = 0
+
 
 func activation_function(sum :float):
 	return (sum*3) / (1 + abs(sum*3))
@@ -17,7 +18,7 @@ func activation_function(sum :float):
 
 func calculate(inputs = []): # TODO add bias
 	sum = 0
-	for i in range(0,inputs.size()):
+	for i in inputs.size():
 		sum += inputs[i].value * weights[i]
 	value = activation_function(sum)
 	return value

@@ -57,13 +57,20 @@ func next_run():
 	print("Starting round %s..." % run)
 	print("Previous best score: %s" % best_score)
 	Global.emit_signal("next_run",run,best_score)
-	target.global_position = Vector2(
-		rand_range(1280/3,1280-(1280/3)),
-		rand_range(720/3,720-(720/3))
-	)
+	var last_position = target.global_position
+	while(true):
+		target.global_position = Vector2(
+			rand_range(1280/4,1280-(1280/4)),
+			rand_range(720/4,720-(720/4))
+		)
+		if target.global_position.distance_to(last_position) > 400:
+			break
 
 onready var target = get_tree().get_nodes_in_group("target")[0]
 
 func calculate_score(node :Node2D):
-	return 50 - node.global_position.distance_to(target.global_position)
+	var score = node.score
+	node.score = 0
+	return score
+	
 	#return 10 - node.global_position.distance_to(Vector2(1280/2,720/2))

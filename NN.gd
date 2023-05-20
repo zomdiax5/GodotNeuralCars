@@ -36,19 +36,23 @@ func _create_node(previous_layer, type):
 	new_node.weights.append(rand_range(-1,1))
 	return new_node
 
+var results
+var size :int = 0
 func calculate(inputs := []):
-	var results = []
-	for l in range(0,neural_net.size()):
-		if l == 0: 
+	results = []
+	size = neural_net.size()
+	for l in range(0,size):
+		if (l !=0 and l != size-1):
+			for node in neural_net[l]: # Normal calculations
+				node.calculate(neural_net[l-1])
+			continue
+		elif l == 0: 
 			for i in range(0,neural_net[l].size()): # Setting up inputs
 				neural_net[l][i].value = inputs[i]
 			continue
-		elif l == neural_net.size()-1: # Outputs
+		else: # Outputs
 			for node in neural_net[l]:
 				results.append(node.calculate(neural_net[l-1]))
-		else:
-			for node in neural_net[l]: # Normal calculations
-				node.calculate(neural_net[l-1])
 	return results
 
 func mutate():
