@@ -63,6 +63,7 @@ margin_top = 54.0
 margin_right = 206.0
 margin_bottom = 70.0
 max_value = 5.0
+value = 1.0
 
 [node name="MutAmountText" type="Label" parent="CanvasLayer/Control/PanelContainer/VBoxContainer"]
 margin_top = 74.0
