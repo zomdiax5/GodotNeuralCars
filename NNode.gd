@@ -9,23 +9,17 @@ var type :String
 
 var bias :float = rand_range(-0.03,0.03)
 
-const e = 2.71828182845
+var sum :float = 0
 
 func activation_function(sum :float):
-	return ((1/(1+pow(e,sum))) *2) -1
+	return (sum*3) / (1 + abs(sum*3))
 	#return tanh(sum)
 
 func calculate(inputs = []): # TODO add bias
-	var input = inputs.duplicate()
-	var sum :float = 0
-	for i in range(0,input.size()):
-		sum += input[i].value * weights[i]
-	#sum += bias
+	sum = 0
+	for i in range(0,inputs.size()):
+		sum += inputs[i].value * weights[i]
 	value = activation_function(sum)
-#	if type=="output":
-#		print(sum)
-#		print(weights)
-#		print("")
 	return value
 
 func mutate():

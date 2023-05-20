@@ -46,7 +46,7 @@ func next_run():
 	
 	for node in get_children():
 		#need to run again to update with brainiest brain
-		if node == best_node or rand_range(0,100) <50: # Lets keep the winner the same to prevent unlearning
+		if node == best_node or rand_range(0,100) < 65: # Lets keep the winner the same to prevent unlearning
 			pass
 		else:
 			node.net.neural_net = null 

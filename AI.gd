@@ -4,6 +4,9 @@ onready var net :NN = $NN
 
 var id
 
+var horizontal :float = 0
+var vertical :float = 0
+
 func _ready() -> void:
 	randomize()
 	id = int(rand_range(-9999999,9999999))
@@ -15,6 +18,9 @@ func map_to_value(value,maximum):
 onready var target = get_tree().get_nodes_in_group("target")[0]
 
 func _physics_process(delta: float) -> void:
+	move(delta)
+	
+func move(delta :float):
 	if global_position.x < 0:
 		global_position.x = 0
 	if global_position.x > 1280:
@@ -30,7 +36,7 @@ func _physics_process(delta: float) -> void:
 	map_to_value(target.global_position.y,720)
 	]
 	var result = net.calculate(data)
-	var horizontal :float = result[0]
-	var vertical :float = result[1]
+	horizontal = result[0]
+	vertical  = result[1]
 
 	move_and_slide(Vector2(horizontal,-vertical).normalized()*delta*4000,Vector2.UP)
