@@ -17,7 +17,7 @@ var vertical :float = 0
 func _ready() -> void:
 	randomize()
 	id = int(rand_range(-9999999,9999999))
-	net.create_net([4,8,2])
+	net.create_net([4,12,2])
 
 func map_to_value(value,maximum):
 	return (value/maximum)-0.5
