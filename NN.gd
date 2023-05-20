@@ -43,11 +43,12 @@ func calculate(inputs := []):
 			for i in range(0,neural_net[l].size()): # Setting up inputs
 				neural_net[l][i].value = inputs[i]
 			continue
-		for node in neural_net[l]: # Normal calculations
-			node.calculate(neural_net[l-1])
-		if l == neural_net.size()-1: # Outputs
+		elif l == neural_net.size()-1: # Outputs
 			for node in neural_net[l]:
 				results.append(node.calculate(neural_net[l-1]))
+		else:
+			for node in neural_net[l]: # Normal calculations
+				node.calculate(neural_net[l-1])
 	return results
 
 func mutate():
