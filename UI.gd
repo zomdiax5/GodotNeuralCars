@@ -17,6 +17,9 @@ func _ready() -> void:
 	$CopyBrain.connect("toggled",Global,"setval",["always_copy_brain"])                      
 	Global.setval($CopyBrain.pressed,"always_copy_brain")  
 	
+	$UseBias.connect("toggled",Global,"setval",["use_bias"])                      
+	Global.setval($UseBias.pressed,"use_bias")  
+	
 	$Restart.connect("pressed",Global,"emit_signal",["restart"])
 	Global.emit_signal("restart")
 	

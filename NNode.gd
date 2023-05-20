@@ -13,10 +13,10 @@ var sum :float = 0
 
 
 func activation_function(sum :float):
-	return (sum*3) / (1 + abs(sum*3))+bias
+	return ((sum*3) / (1 + abs(sum*3)))#+bias
 	#return tanh(sum)
 
-func calculate(inputs = []): # TODO add bias
+func calculate(inputs = []):
 	sum = 0
 	for i in inputs.size():
 		sum += inputs[i].value * weights[i]
@@ -36,3 +36,6 @@ func mutate():
 		weights[i] += change
 		weights[i] = clamp(weights[i],-1.0,1.0)
 	bias = rand_range(-0.1,0.1)
+	
+	if not Global.use_bias:
+		bias = 0

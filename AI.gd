@@ -1,14 +1,6 @@
 extends KinematicBody2D
 
 onready var net :NN = $NN
-
-########################
-# TODO WHAT TO IMPROVE
-#
-# Porting to C# might give some calculation benefits
-# Add a more fun game
-#
-#########################
 var id
 
 var score :float = 0

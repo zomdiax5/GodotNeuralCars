@@ -9,6 +9,8 @@ var amount_of_AI :int = 100
 
 var always_copy_brain :bool = false
 
+var use_bias :bool = false
+
 signal next_run(number,best)
 signal restart
 

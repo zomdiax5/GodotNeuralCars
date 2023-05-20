@@ -33,7 +33,8 @@ func _create_node(previous_layer, type):
 			new_node.weights.append(rand_range(-1,1))
 	
 	new_node.bias = rand_range(-0.1,0.1)
-	new_node.weights.append(rand_range(-1,1))
+	if not Global.use_bias:
+		new_node.bias = 0
 	return new_node
 
 var results

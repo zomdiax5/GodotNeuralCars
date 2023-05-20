@@ -13,6 +13,9 @@ func _ready() -> void:
 	if !ran:
 		Global.connect("restart",self,"restart")
 		ran = true
+	
+
+func setup():
 	for i in range(0,Global.amount_of_AI):
 		var scene = AI.instance()
 		add_child(scene)
@@ -30,7 +33,7 @@ func restart():
 		child.queue_free()
 	run = 0
 	timer = 0
-	_ready()
+	setup()
 
 func next_run():
 	run += 1
@@ -57,6 +60,11 @@ func next_run():
 	print("Starting round %s..." % run)
 	print("Previous best score: %s" % best_score)
 	Global.emit_signal("next_run",run,best_score)
+	
+	reset_world()
+	
+
+func reset_world():
 	var last_position = target.global_position
 	while(true):
 		target.global_position = Vector2(
