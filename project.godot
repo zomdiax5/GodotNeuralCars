@@ -30,6 +30,10 @@ config/name="NeuralNet"
 run/main_scene="res://Control.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Global="*res://Global.gd"
+
 [display]
 
 window/size/width=1280

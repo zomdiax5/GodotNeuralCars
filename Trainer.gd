@@ -4,23 +4,34 @@ var run :int = 0
 
 var timer :float = 0
 
-export(int) var number_of_AI = 5
 var AI = preload("res://AI.tscn")
+
+var ran :bool = false
 
 
 func _ready() -> void:
-	for i in range(0,number_of_AI):
+	if !ran:
+		Global.connect("restart",self,"restart")
+		ran = true
+	for i in range(0,Global.amount_of_AI):
 		var scene = AI.instance()
 		add_child(scene)
 		scene.global_position = Vector2(rand_range(0,1280),rand_range(0,720))
 
 func _process(delta:float):
-	Engine.time_scale = 2
-	if timer > 10:
+	Engine.time_scale = Global.timescale
+	if timer > 7:
 		next_run()
 		timer = 0
 	timer+=delta
-	
+
+func restart():
+	for child in get_children():
+		child.queue_free()
+	run = 0
+	timer = 0
+	_ready()
+
 func next_run():
 	run += 1
 	var best_score = -999999999999
@@ -44,9 +55,10 @@ func next_run():
 	
 	print("Starting round %s..." % run)
 	print("Previous best score: %s" % best_score)
+	Global.emit_signal("next_run",run,best_score)
 	target.global_position = Vector2(
-		rand_range(0,1280),
-		rand_range(0,720)
+		rand_range(1280/3,1280-(1280/3)),
+		rand_range(720/3,720-(720/3))
 	)
 
 onready var target = get_tree().get_nodes_in_group("target")[0]

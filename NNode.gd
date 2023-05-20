@@ -29,7 +29,7 @@ func calculate(inputs = []): # TODO add bias
 	return value
 
 func mutate():
-	var weight_diff = 0.004
+	var weight_diff = Global.mutation_rate
 	for i in range(0,weights.size()):
 		var max_p :float = 0.9
 		var max_n :float = 0.9

@@ -7,7 +7,7 @@ var id
 func _ready() -> void:
 	randomize()
 	id = int(rand_range(-9999999,9999999))
-	net.create_net([4,2,2])
+	net.create_net([4,10,2])
 
 func map_to_value(value,maximum):
 	return (value/maximum)-0.5
