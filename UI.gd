@@ -16,7 +16,9 @@ func _ready() -> void:
 	
 	
 	$UseBias.connect("toggled",Global,"setval",["use_bias"])                      
-	Global.setval($UseBias.pressed,"use_bias")  
+	Global.setval($UseBias.pressed,"use_bias") 
+	$DrawStuff.connect("toggled",Global,"setval",["draw_stuff"])                      
+	Global.setval($DrawStuff.pressed,"draw_stuff")  
 	
 	$Restart.connect("pressed",Global,"emit_signal",["restart"])
 	Global.emit_signal("restart")
@@ -24,4 +26,4 @@ func _ready() -> void:
 
 func next(run,best):
 	$CurrentRun.text = "Last Run: %s" % run
-	$PreviusBestScore.text = "Best Score: %s" % best
+	$PreviusBestScore.text = "Best Score: %s" % stepify(best, 0.01)

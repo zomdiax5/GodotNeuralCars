@@ -20,6 +20,25 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 5
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2( 1, 0 )
+polygon = PoolVector2Array( -187, -119, 176, -113, 226, 196, 227, 271, 292, 332, 370, 349, 516, 372, 662, 377, 846, 372, 1010, 362, 1126, 322, 1229, 299, 1345, 168, 1376, 44, 1450, -94, 1504, -200, 1591, -266, 1758, -306, 1897, -312, 2047, -259, 2139, -162, 2187, -51, 2235, 120, 2250, 302, 2253, 467, 2265, 620, 2253, 719, 2284, 784, 2389, 868, 2476, 964, 2545, 1140, 2505, 1324, 2344, 1497, 2134, 1593, 1920, 1556, 1764, 1446, 1591, 1299, 1431, 1159, 1229, 1140, 1046, 1147, 947, 1276, 896, 1364, 695, 1466, 484, 1485, 316, 1546, 208, 1435, 19, 1389, -91, 1254, -219, 1107, -301, 1025, -485, 1009, -612, 997, -758, 978, -774, 819, -745, 587, -777, 384, -777, 143, -1054, -88, -1142, 92, -1130, 294, -937, 563, -909, 745, -1009, 944, -920, 1196, -717, 1393, -328, 1685, -41, 1614, 193, 1690, 483, 1614, 830, 1643, 1149, 1735, 1598, 1672, 2218, 1725, 2222, 2062, 1515, 2067, 1151, 1979, 820, 1911, 502, 1822, 184, 1924, -36, 1831, -545, 1928, -2545, 2238, -2509, 2378, 3400, 2324, 2905, -772, -1190, -611, -2439, -672, -2134, -45, -2432, 2230, -494, 1958, -858, 1882, -1214, 1759, -1566, 1100, -1678, 801, -1587, 550, -1512, 288, -1475, 107, -1402, -337, -1050, -212, -844, -322, -678, -138, -563, -83, -208, -77 )
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D/CollisionShape2D"]
+color = Color( 0.654902, 1, 0.623529, 1 )
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( -321, -89, -207, -102, -168, 402, 35, 572, 206, 638, 620, 705, 957, 688, 1207, 635, 1428, 539, 1530, 464, 1559, 309, 1602, 147, 1631, 2, 1679, -107, 1759, -150, 1893, -126, 1962, 45, 1968, 400, 2000, 705, 2083, 835, 2205, 982, 2248, 1204, 2179, 1327, 2096, 1351, 2008, 1324, 1946, 1270, 1842, 1180, 1701, 1089, 1566, 1030, 1431, 1005, 1231, 1014, 1057, 1015, 967, 993, 878, 1046, 684, 1142, 662, 1188, 545, 1228, 467, 1254, 384, 1343, 326, 1233, 214, 1150, 126, 1065, 78, 974, -27, 878, -144, 803, -272, 782, -411, 774, -488, 747, -531, 664, -542, 574, -544, 491, -534, 392, -539, 221, -517, 25, -589, -124 )
+
+[node name="Polygon2D2" type="Polygon2D" parent="StaticBody2D/CollisionShape2D2"]
+position = Vector2( 1, 0 )
+color = Color( 0.654902, 1, 0.623529, 1 )
+script = ExtResource( 1 )
+
 [node name="Trainer" type="Node" parent="."]
 script = ExtResource( 3 )
 
@@ -30,9 +49,6 @@ anchor_top = 1.0
 anchor_bottom = 1.0
 margin_top = -286.0
 margin_bottom = 0.0
-
-[node name="VBoxContainer" parent="CanvasLayer/Control/PanelContainer" index="0"]
-margin_bottom = 279.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 457, 915 )
@@ -169,8 +185,8 @@ position = Vector2( -497, 886 )
 rotation = 1.8775
 
 [node name="Check33" parent="." instance=ExtResource( 4 )]
-position = Vector2( -649, 681 )
-rotation = 3.10396
+position = Vector2( -634, 694 )
+rotation = 2.96389
 
 [node name="Check34" parent="." instance=ExtResource( 4 )]
 position = Vector2( -668, 469 )
@@ -181,12 +197,12 @@ position = Vector2( -671, 227 )
 rotation = 3.10396
 
 [node name="Check36" parent="." instance=ExtResource( 4 )]
-position = Vector2( -704, 11 )
-rotation = 3.10396
+position = Vector2( -687, 56 )
+rotation = 2.76463
 
 [node name="Check37" parent="." instance=ExtResource( 4 )]
-position = Vector2( -799, -91 )
-rotation = 2.686
+position = Vector2( -823, -84 )
+rotation = 2.22466
 
 [node name="Check38" parent="." instance=ExtResource( 4 )]
 position = Vector2( -1034, -163 )
@@ -201,7 +217,7 @@ position = Vector2( -1301, 352 )
 rotation = 0.0316649
 
 [node name="Check41" parent="." instance=ExtResource( 4 )]
-position = Vector2( -1297, 557 )
+position = Vector2( -1314, 618 )
 rotation = 0.0316649
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Check41"]
@@ -209,67 +225,67 @@ position = Vector2( 0.316772, 0 )
 shape = SubResource( 1 )
 
 [node name="Check42" parent="." instance=ExtResource( 4 )]
-position = Vector2( -1302, 708 )
-rotation = 0.0316649
+position = Vector2( -1293, 864 )
+rotation = -0.190705
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Check42"]
 position = Vector2( 0.0633545, 1.99902 )
 shape = SubResource( 1 )
 
 [node name="Check43" parent="." instance=ExtResource( 4 )]
-position = Vector2( -1309, 886 )
-rotation = 0.0316649
+position = Vector2( -1229, 1074 )
+rotation = -0.289172
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Check43"]
 position = Vector2( 0.0633545, 1.99902 )
 shape = SubResource( 1 )
 
 [node name="Check44" parent="." instance=ExtResource( 4 )]
-position = Vector2( -1239, 1117 )
-rotation = -0.242837
+position = Vector2( -1110, 1316 )
+rotation = -0.35617
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Check44"]
 position = Vector2( 0.0633545, 1.99902 )
 shape = SubResource( 1 )
 
 [node name="Check45" parent="." instance=ExtResource( 4 )]
-position = Vector2( -1111, 1371 )
-rotation = -0.401908
+position = Vector2( -965, 1553 )
+rotation = -0.689043
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Check45"]
 position = Vector2( 0.0633545, 1.99902 )
 shape = SubResource( 1 )
 
 [node name="Check46" parent="." instance=ExtResource( 4 )]
-position = Vector2( -534, 1759 )
+position = Vector2( -681, 1708 )
 rotation = -1.24003
 
 [node name="Check47" parent="." instance=ExtResource( 4 )]
-position = Vector2( -43, 1746 )
-rotation = -1.55274
+position = Vector2( -272, 1769 )
+rotation = -1.77848
 
 [node name="Check48" parent="." instance=ExtResource( 4 )]
-position = Vector2( 480, 1733 )
-rotation = -1.55274
+position = Vector2( 418, 1752 )
+rotation = -1.74749
 
 [node name="Check49" parent="." instance=ExtResource( 4 )]
-position = Vector2( 205, 1805 )
-rotation = -1.55274
+position = Vector2( 80, 1774 )
+rotation = -1.38844
 
 [node name="Check50" parent="." instance=ExtResource( 4 )]
-position = Vector2( 883, 1800 )
+position = Vector2( 784, 1777 )
 rotation = -1.35342
 
 [node name="Check51" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1259, 1864 )
+position = Vector2( 1174, 1861 )
 rotation = -1.35342
 
 [node name="Check52" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1590, 1877 )
+position = Vector2( 1488, 1885 )
 rotation = -1.57774
 
 [node name="Check53" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1862, 1877 )
+position = Vector2( 1822, 1888 )
 rotation = -1.57774
 
 [node name="Check54" parent="." instance=ExtResource( 4 )]
@@ -283,24 +299,5 @@ rotation = -1.57979
 [node name="Check56" parent="." instance=ExtResource( 4 )]
 position = Vector2( 2549, 1892 )
 rotation = -1.57979
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-collision_layer = 5
-
-[node name="CollisionShape2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-position = Vector2( 1, 0 )
-polygon = PoolVector2Array( -187, -119, 176, -113, 226, 196, 227, 271, 292, 332, 370, 349, 516, 372, 662, 377, 846, 372, 1010, 362, 1126, 322, 1229, 299, 1345, 168, 1376, 44, 1450, -94, 1504, -200, 1591, -266, 1758, -306, 1897, -312, 2047, -259, 2139, -162, 2187, -51, 2235, 120, 2250, 302, 2253, 467, 2265, 620, 2253, 719, 2284, 784, 2389, 868, 2476, 964, 2545, 1140, 2505, 1324, 2344, 1497, 2134, 1593, 1920, 1556, 1764, 1446, 1591, 1299, 1431, 1159, 1229, 1140, 1046, 1147, 947, 1276, 896, 1364, 695, 1466, 484, 1485, 316, 1546, 208, 1435, 19, 1389, -91, 1254, -219, 1107, -301, 1025, -485, 1009, -612, 997, -758, 978, -774, 819, -745, 587, -777, 384, -777, 143, -1054, -88, -1142, 92, -1130, 294, -937, 563, -909, 745, -1009, 944, -920, 1196, -717, 1393, -328, 1685, -41, 1614, 193, 1690, 483, 1614, 830, 1643, 1149, 1735, 1598, 1672, 2218, 1725, 2222, 2062, 1515, 2067, 1151, 1979, 820, 1911, 502, 1822, 184, 1924, -36, 1831, -545, 1928, -2545, 2238, -2509, 2378, 3400, 2324, 2905, -772, -1190, -611, -2439, -672, -2134, -45, -2432, 2230, -494, 1958, -858, 1882, -1214, 1759, -1566, 1100, -1678, 801, -1587, 550, -1512, 288, -1475, 107, -1402, -337, -1050, -212, -844, -322, -678, -138, -563, -83, -208, -77 )
-
-[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D/CollisionShape2D"]
-color = Color( 0.654902, 1, 0.623529, 1 )
-script = ExtResource( 1 )
-
-[node name="CollisionShape2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PoolVector2Array( -321, -89, -207, -102, -168, 402, 35, 572, 206, 638, 620, 705, 957, 688, 1207, 635, 1428, 539, 1530, 464, 1559, 309, 1602, 147, 1631, 2, 1679, -107, 1759, -150, 1893, -126, 1962, 45, 1968, 400, 2000, 705, 2083, 835, 2205, 982, 2248, 1204, 2179, 1327, 2096, 1351, 2008, 1324, 1946, 1270, 1842, 1180, 1701, 1089, 1566, 1030, 1431, 1005, 1231, 1014, 1057, 1015, 967, 993, 878, 1046, 684, 1142, 662, 1188, 545, 1228, 467, 1254, 384, 1343, 326, 1233, 214, 1150, 126, 1065, 78, 974, -27, 878, -144, 803, -272, 782, -411, 774, -488, 747, -531, 664, -542, 574, -544, 491, -534, 392, -539, 221, -517, 25, -589, -124 )
-
-[node name="Polygon2D2" type="Polygon2D" parent="StaticBody2D/CollisionShape2D2"]
-position = Vector2( 1, 0 )
-color = Color( 0.654902, 1, 0.623529, 1 )
-script = ExtResource( 1 )
 
 [editable path="CanvasLayer"]

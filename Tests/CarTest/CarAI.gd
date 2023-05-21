@@ -38,22 +38,19 @@ func map_to_value(value,maximum): # Not used, maps value to -1 - 1 for use as in
 func _process(delta: float) -> void:
 	if lost:
 		score = -1
-		modulate = Color(0.5,0.5,0.5,0.7)
+		modulate = Color(0.5,0.5,0.5,0.5)
 	else:
-		modulate = Color(1,1,1,0.9)
+		modulate = Color(1,1,1,0.7)
 	update()
 	
 func _draw():
+	if not Global.draw_stuff:
+		return
 	for cast in casts:
-		var dist = cast_distance(cast) * cast.cast_to.y
-		if cast_distance(cast) == 0:
-			draw_line(Vector2(0,0),
-			Vector2(125,0).rotated(cast.rotation+deg2rad(90)),
-			Color("FFFFFF"))
-		else:
-			draw_line(Vector2(0,0),
-			Vector2(dist,0).rotated(cast.rotation+deg2rad(90)),
-			Color("FF0000"))
+		var dist = cast_distance(cast)
+		draw_line(Vector2(0,0),
+		Vector2(cast.cast_to.y-(dist*cast.cast_to.y),0).rotated(cast.rotation+deg2rad(90)),
+		Color(clamp(dist*2,0.3,1),0.1,0.1))
 
 func _physics_process(delta: float) -> void:
 	move(delta)
@@ -61,7 +58,7 @@ func _physics_process(delta: float) -> void:
 func cast_distance(cast:RayCast2D):
 	if not cast.is_colliding():
 		return 0.0
-	return cast.global_position.distance_to(cast.get_collision_point()) / cast.cast_to.y
+	return 1 - (cast.global_position.distance_to(cast.get_collision_point()) / cast.cast_to.y)
 
 func reset(): # Reset Car
 	speed = 0.0
@@ -86,7 +83,7 @@ func move(delta :float):	# setup Data
 	if lost:
 		return
 	move_and_slide(Vector2(speed,0).rotated(rotation)*10)
-	rotation_degrees += result[1]*3*(1+(Global.timescale/2))
+	rotation_degrees += result[1]*4*(1+(Global.timescale/2))
 
 
 func _on_Area2D_body_shape_entered(body_rid: RID, body: Node, body_shape_index: int, local_shape_index: int) -> void:

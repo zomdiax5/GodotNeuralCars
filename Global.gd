@@ -11,6 +11,8 @@ var use_bias :bool = false
 
 var default_bias = 0.5
 
+var draw_stuff :bool = true
+
 signal next_run(number,best)
 signal restart
 

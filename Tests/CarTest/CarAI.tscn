@@ -19,27 +19,27 @@ shape = SubResource( 1 )
 
 [node name="cast1" type="RayCast2D" parent="."]
 enabled = true
-cast_to = Vector2( 0, 125 )
+cast_to = Vector2( 0, 250 )
 
 [node name="cast2" type="RayCast2D" parent="."]
 rotation = -0.785397
 enabled = true
-cast_to = Vector2( 0, 125 )
+cast_to = Vector2( 0, 250 )
 
 [node name="cast3" type="RayCast2D" parent="."]
 rotation = -1.57079
 enabled = true
-cast_to = Vector2( 0, 125 )
+cast_to = Vector2( 0, 250 )
 
 [node name="cast4" type="RayCast2D" parent="."]
 rotation = -2.35619
 enabled = true
-cast_to = Vector2( 0, 125 )
+cast_to = Vector2( 0, 250 )
 
 [node name="cast5" type="RayCast2D" parent="."]
 rotation = -3.14159
 enabled = true
-cast_to = Vector2( 0, 125 )
+cast_to = Vector2( 0, 250 )
 
 [node name="Car" type="Sprite" parent="."]
 texture = ExtResource( 3 )
