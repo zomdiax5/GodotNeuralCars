@@ -35,9 +35,9 @@ func _physics_process(delta:float):
 		timer = 999
 
 func restart():	# Restart the whole simulation
+	randomize()
 	for child in get_children():
 		child.queue_free()
-	yield(get_tree(),"idle_frame")
 	run = 0
 	timer = 0
 	setup()

@@ -16,12 +16,20 @@ onready var cast_3: RayCast2D = $cast3
 onready var cast_4: RayCast2D = $cast4
 onready var cast_5: RayCast2D = $cast5
 
+onready var casts = [
+	cast_1,
+	cast_2,
+	cast_3,
+	cast_4,
+	cast_5,
+]
+
 var speed :float = 0.0
 
 func _ready() -> void:
 	randomize()
 	# Create a Neural Network (NN) with 5 inputs, 1 hidden layer with 4 nodes, and 2 outputs
-	net.create_net([5,4,2]) 
+	net.create_net([5,4,2])
 
 func map_to_value(value,maximum): # Not used, maps value to -1 - 1 for use as input
 	return (value/(maximum/2))-1
@@ -30,6 +38,22 @@ func map_to_value(value,maximum): # Not used, maps value to -1 - 1 for use as in
 func _process(delta: float) -> void:
 	if lost:
 		score = -1
+		modulate = Color(0.5,0.5,0.5,0.7)
+	else:
+		modulate = Color(1,1,1,0.9)
+	update()
+	
+func _draw():
+	for cast in casts:
+		var dist = cast_distance(cast) * cast.cast_to.y
+		if cast_distance(cast) == 0:
+			draw_line(Vector2(0,0),
+			Vector2(125,0).rotated(cast.rotation+deg2rad(90)),
+			Color("FFFFFF"))
+		else:
+			draw_line(Vector2(0,0),
+			Vector2(dist,0).rotated(cast.rotation+deg2rad(90)),
+			Color("FF0000"))
 
 func _physics_process(delta: float) -> void:
 	move(delta)
@@ -58,7 +82,7 @@ func move(delta :float):	# setup Data
 	# Movement
 	
 	speed += result[0]
-	speed = clamp(speed,-25,30)
+	speed = clamp(speed,-25,45)
 	if lost:
 		return
 	move_and_slide(Vector2(speed,0).rotated(rotation)*10)
