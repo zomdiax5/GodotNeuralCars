@@ -46,18 +46,21 @@ var size :int = 0
 func calculate(inputs := []):
 	results = []
 	size = neural_net.size()
+	var net
 	for l in range(0,size):
 		if (l !=0 and l != size-1):
+			net = neural_net[l-1]
 			for node in neural_net[l]: # Normal calculations
-				node.calculate(neural_net[l-1])
+				node.calculate(net)
 			continue
 		elif l == 0: 
 			for i in range(0,neural_net[l].size()): # Setting up inputs
 				neural_net[l][i].value = inputs[i]
 			continue
 		else: # Outputs
+			net = neural_net[l-1]
 			for node in neural_net[l]:
-				results.append(node.calculate(neural_net[l-1]))
+				results.append(node.calculate(net))
 	return results
 
 # Mutate neurons

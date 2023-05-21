@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends Node2D
 
 var net :NN = NN.new()
 
@@ -44,7 +44,7 @@ func _process(delta: float) -> void:
 	update()
 	
 func _draw():
-	if not Global.draw_stuff:
+	if not Global.draw_stuff or lost:
 		return
 	for cast in casts:
 		var dist = cast_distance(cast)
@@ -82,8 +82,8 @@ func move(delta :float):	# setup Data
 	speed = clamp(speed,-25,45)
 	if lost:
 		return
-	move_and_slide(Vector2(speed,0).rotated(rotation)*10)
-	rotation_degrees += result[1]*4*(1+(Global.timescale/2))
+	position+=Vector2(speed,0).rotated(rotation)*delta*10
+	rotation_degrees += result[1]*3.4*(Global.timescale*1.3)
 
 
 func _on_Area2D_body_shape_entered(body_rid: RID, body: Node, body_shape_index: int, local_shape_index: int) -> void:

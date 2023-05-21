@@ -1,43 +1,42 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Tests/CarTest/CarAI.gd" type="Script" id=2]
 [ext_resource path="res://Tests/CarTest/Car.png" type="Texture" id=3]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 35, 14 )
-
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 37, 16 )
 
-[node name="Car" type="KinematicBody2D"]
+[node name="Car" type="Node2D"]
 position = Vector2( 617, 344 )
-collision_layer = 2
 script = ExtResource( 2 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
-
 [node name="cast1" type="RayCast2D" parent="."]
+position = Vector2( 7, 16 )
+rotation = -0.523598
 enabled = true
 cast_to = Vector2( 0, 250 )
 
 [node name="cast2" type="RayCast2D" parent="."]
-rotation = -0.785397
+position = Vector2( 23, 16 )
+rotation = -1.0472
 enabled = true
 cast_to = Vector2( 0, 250 )
 
 [node name="cast3" type="RayCast2D" parent="."]
+position = Vector2( 31, 0 )
 rotation = -1.57079
 enabled = true
 cast_to = Vector2( 0, 250 )
 
 [node name="cast4" type="RayCast2D" parent="."]
-rotation = -2.35619
+position = Vector2( 23, -16 )
+rotation = -2.09439
 enabled = true
 cast_to = Vector2( 0, 250 )
 
 [node name="cast5" type="RayCast2D" parent="."]
-rotation = -3.14159
+position = Vector2( 7, -16 )
+rotation = -2.61799
 enabled = true
 cast_to = Vector2( 0, 250 )
 
