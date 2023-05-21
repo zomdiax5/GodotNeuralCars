@@ -50,10 +50,10 @@ func next_run():
 	for node in get_children():
 		if Global.always_copy_brain and node != best_node:
 			node.net.neural_net = null 
-			node.net.neural_net = best_node.net.neural_net.duplicate()
+			node.net.neural_net = best_node.net.neural_net.duplicate(true)
 		if rand_range(0,100) < Global.mutation_chance and node != best_node:
 			node.net.neural_net = null 
-			node.net.neural_net = best_node.net.neural_net.duplicate()
+			node.net.neural_net = best_node.net.neural_net.duplicate(true)
 			node.net.mutate()
 			
 	

@@ -1,4 +1,4 @@
-extends Node
+extends Object
 class_name NN
 
 var neural_net = []

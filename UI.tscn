@@ -60,7 +60,7 @@ margin_top = 92.0
 margin_right = 223.0
 margin_bottom = 108.0
 hint_tooltip = "How much the neural net mutates every run."
-max_value = 0.02
+max_value = 0.1
 step = 0.001
 value = 0.002
 

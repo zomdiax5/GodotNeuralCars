@@ -38,6 +38,7 @@ func _physics_process(delta:float):
 func restart():
 	for child in get_children():
 		child.queue_free()
+	yield(get_tree(),"idle_frame")
 	run = 0
 	timer = 0
 	setup()
@@ -56,10 +57,7 @@ func next_run():
 		node.rotation_degrees = 90
 
 	for node in get_children():
-		if Global.always_copy_brain and node != best_node:
-			node.net.neural_net = null 
-			node.net.neural_net = best_node.net.neural_net.duplicate(true)
-		if rand_range(0,100) < Global.mutation_chance and node != best_node:
+		if (rand_range(0,100) < Global.mutation_chance or Global.always_copy_brain) and node != best_node:
 			node.net.neural_net = null 
 			node.net.neural_net = best_node.net.neural_net.duplicate(true)
 			node.net.mutate()

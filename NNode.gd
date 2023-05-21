@@ -1,4 +1,4 @@
-extends Node
+extends Object
 class_name NNode
 
 var weights = []
@@ -27,17 +27,14 @@ func calculate(inputs = []):
 func mutate():
 	var weight_diff = Global.mutation_amount
 	for i in range(0,weights.size()):
-		var max_p :float = 0.9
-		var max_n :float = 0.9
-		if weights[i] > 0.7:
-			max_p = 0.1
-		if weights[i] < -0.7:
-			max_n = 0.1
-		var change = rand_range((weight_diff*max_n *-1), weight_diff*max_p) # TODO should slowly make the max/min values less propable, rather than fully disabling it suddenly
+		var change = rand_range(
+			(weight_diff*-1),
+			weight_diff) # TODO should slowly make the max/min values less propable, rather than fully disabling it suddenly
 		weights[i] += change
-		weights[i] = clamp(weights[i],-1.0,1.0)
-	bias += rand_range(-Global.mutation_amount,-Global.mutation_amount)
-	bias = clamp(bias,-1,1)
+		weights[i] = clamp(weights[i],-5.0,5.0)
+	bias_weight += rand_range(-Global.mutation_amount,-Global.mutation_amount)
+	bias_weight = clamp(bias_weight,-5,5)
+	
 	
 	if not Global.use_bias:
 		bias = 0
