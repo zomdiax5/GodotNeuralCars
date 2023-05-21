@@ -22,8 +22,10 @@ func _process(delta: float) -> void:
 	var dist = global_position.distance_to(target.global_position)
 	if dist < 200:
 		score+=delta* ((200/dist)*0.05)
+
+func _physics_process(delta: float) -> void:
 	move(delta)
-	
+
 func move(delta :float):
 #	if global_position.x < 0:
 #		global_position.x = 0

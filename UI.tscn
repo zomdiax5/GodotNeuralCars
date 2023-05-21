@@ -1,0 +1,120 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://UI.gd" type="Script" id=1]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+margin_right = 1280.0
+margin_bottom = 720.0
+rect_min_size = Vector2( 1280, 720 )
+rect_scale = Vector2( 1.5, 1.5 )
+
+[node name="PanelContainer" type="PanelContainer" parent="Control"]
+self_modulate = Color( 1, 1, 1, 0.729412 )
+margin_right = 237.0
+margin_bottom = 286.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 230.0
+margin_bottom = 279.0
+script = ExtResource( 1 )
+
+[node name="CurrentRun" type="Label" parent="Control/PanelContainer/VBoxContainer"]
+margin_right = 223.0
+margin_bottom = 14.0
+text = "Last Run:"
+
+[node name="PreviusBestScore" type="Label" parent="Control/PanelContainer/VBoxContainer"]
+margin_top = 18.0
+margin_right = 223.0
+margin_bottom = 32.0
+text = "Best Score:"
+
+[node name="TimeText" type="Label" parent="Control/PanelContainer/VBoxContainer"]
+margin_top = 36.0
+margin_right = 223.0
+margin_bottom = 50.0
+text = "Timescale"
+align = 1
+
+[node name="Timescale" type="HSlider" parent="Control/PanelContainer/VBoxContainer"]
+margin_top = 54.0
+margin_right = 223.0
+margin_bottom = 70.0
+hint_tooltip = "Changes how fast the simulation is ran (the faster the less accurate the tests will be)."
+max_value = 5.0
+value = 1.0
+
+[node name="MutAmountText" type="Label" parent="Control/PanelContainer/VBoxContainer"]
+margin_top = 74.0
+margin_right = 223.0
+margin_bottom = 88.0
+text = "Mutation Amount"
+align = 1
+
+[node name="MutationAmount" type="HSlider" parent="Control/PanelContainer/VBoxContainer"]
+margin_top = 92.0
+margin_right = 223.0
+margin_bottom = 108.0
+hint_tooltip = "How much the neural net mutates every run."
+max_value = 0.02
+step = 0.001
+value = 0.002
+
+[node name="MutChanceText" type="Label" parent="Control/PanelContainer/VBoxContainer"]
+margin_top = 112.0
+margin_right = 223.0
+margin_bottom = 126.0
+text = "Mutation Chance"
+align = 1
+
+[node name="MutationChance" type="HSlider" parent="Control/PanelContainer/VBoxContainer"]
+margin_top = 130.0
+margin_right = 223.0
+margin_bottom = 146.0
+hint_tooltip = "0% - 100%
+The chances to mutate the neural net."
+step = 0.001
+value = 37.0
+
+[node name="AiNumText" type="Label" parent="Control/PanelContainer/VBoxContainer"]
+margin_top = 150.0
+margin_right = 223.0
+margin_bottom = 164.0
+text = "Number of AI"
+align = 1
+
+[node name="NumberOfAI" type="SpinBox" parent="Control/PanelContainer/VBoxContainer"]
+margin_top = 168.0
+margin_right = 223.0
+margin_bottom = 192.0
+hint_tooltip = "Number of AI to spawn.
+[Requires pressing Restart!]"
+min_value = 1.0
+max_value = 10000.0
+value = 50.0
+
+[node name="CopyBrain" type="CheckBox" parent="Control/PanelContainer/VBoxContainer"]
+margin_top = 196.0
+margin_right = 223.0
+margin_bottom = 220.0
+hint_tooltip = "The best neural net is copied to others according to the % of mutation chance, this setting will force everyone to have the mutated copy of the best net last run."
+text = "Always Copy Best Brain"
+
+[node name="UseBias" type="CheckBox" parent="Control/PanelContainer/VBoxContainer"]
+margin_top = 224.0
+margin_right = 223.0
+margin_bottom = 248.0
+hint_tooltip = "Add Bias to the output of the neurons.
+Might help the net train, but might also make the results worse."
+text = "Use Bias"
+
+[node name="Restart" type="Button" parent="Control/PanelContainer/VBoxContainer"]
+margin_top = 252.0
+margin_right = 223.0
+margin_bottom = 272.0
+hint_tooltip = "Restarts the simulation."
+text = "Restart"

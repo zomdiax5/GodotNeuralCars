@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Area2D",
+"class": "Check",
+"language": "GDScript",
+"path": "res://Tests/CarTest/Check.gd"
+}, {
 "base": "Node",
 "class": "NN",
 "language": "GDScript",
@@ -20,6 +25,7 @@ _global_script_classes=[ {
 "path": "res://NNode.gd"
 } ]
 _global_script_class_icons={
+"Check": "",
 "NN": "",
 "NNode": ""
 }
@@ -27,7 +33,7 @@ _global_script_class_icons={
 [application]
 
 config/name="NeuralNet"
-run/main_scene="res://Control.tscn"
+run/main_scene="res://Tests/FirstTest/FirstTest.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -36,9 +42,12 @@ Global="*res://Global.gd"
 
 [display]
 
-window/size/width=1280
-window/size/height=720
-window/stretch/mode="viewport"
+window/size/width=1920
+window/size/height=1080
+window/size/test_width=1280
+window/size/test_height=720
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
 
 [gui]
 

@@ -11,8 +11,11 @@ var always_copy_brain :bool = false
 
 var use_bias :bool = false
 
+var default_bias = 0.5
+
 signal next_run(number,best)
 signal restart
+
 
 func setval(value,variable_name):
 	set(variable_name,value)

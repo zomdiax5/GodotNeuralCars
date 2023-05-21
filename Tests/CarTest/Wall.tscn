@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 131, 15.5 )
+
+[node name="Wall" type="StaticBody2D"]
+modulate = Color( 1, 0, 0, 1 )
+position = Vector2( -11, 0 )
+collision_layer = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 2 )
+shape = SubResource( 1 )

@@ -4,7 +4,7 @@ var run :int = 0
 
 var timer :float = 0
 
-var AI = preload("res://AI.tscn")
+var AI = preload("res://Tests/FirstTest/AI.tscn")
 
 var ran :bool = false
 

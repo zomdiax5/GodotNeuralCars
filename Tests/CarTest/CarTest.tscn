@@ -1,0 +1,187 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://UI.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Tests/CarTest/CarTrainer.gd" type="Script" id=3]
+[ext_resource path="res://Tests/CarTest/Check.tscn" type="PackedScene" id=4]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Trainer" type="Node" parent="."]
+script = ExtResource( 3 )
+
+[node name="CanvasLayer" parent="." instance=ExtResource( 2 )]
+
+[node name="PanelContainer" parent="CanvasLayer/Control" index="0"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -286.0
+margin_bottom = 0.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 895, 623 )
+current = true
+zoom = Vector2( 2, 2 )
+
+[node name="Checkpoints" type="Node2D" parent="."]
+
+[node name="Check" parent="." instance=ExtResource( 4 )]
+
+[node name="Check2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 94, 367 )
+rotation = -0.527065
+
+[node name="Check3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 302, 495 )
+rotation = -1.07158
+
+[node name="Check4" parent="." instance=ExtResource( 4 )]
+position = Vector2( 490, 529 )
+rotation = -1.35112
+
+[node name="Check5" parent="." instance=ExtResource( 4 )]
+position = Vector2( 678, 539 )
+rotation = -1.63737
+
+[node name="Check6" parent="." instance=ExtResource( 4 )]
+position = Vector2( 910, 515 )
+rotation = -1.63737
+
+[node name="Check7" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1132, 485 )
+rotation = -1.63737
+
+[node name="Check8" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1334, 397 )
+rotation = -2.06972
+
+[node name="Check9" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1458, 177 )
+rotation = -2.68333
+
+[node name="Check10" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1514, -23 )
+rotation = -2.68333
+
+[node name="Check11" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1596, -183 )
+rotation = -2.68333
+
+[node name="Check12" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1776, -245 )
+rotation = -1.86252
+
+[node name="Check13" parent="." instance=ExtResource( 4 )]
+position = Vector2( 2000, -139 )
+rotation = -0.840142
+
+[node name="Check14" parent="." instance=ExtResource( 4 )]
+position = Vector2( 2086, 64.9999 )
+rotation = -0.261526
+
+[node name="Check15" parent="." instance=ExtResource( 4 )]
+position = Vector2( 2114, 393 )
+rotation = -0.261526
+
+[node name="Check16" parent="." instance=ExtResource( 4 )]
+position = Vector2( 2134, 641 )
+rotation = -0.261526
+
+[node name="Check17" parent="." instance=ExtResource( 4 )]
+position = Vector2( 2253, 919 )
+rotation = -0.261526
+
+[node name="Check18" parent="." instance=ExtResource( 4 )]
+position = Vector2( 2377, 1119 )
+rotation = -0.261526
+
+[node name="Check19" parent="." instance=ExtResource( 4 )]
+position = Vector2( 2336, 1302 )
+rotation = 0.381567
+
+[node name="Check20" parent="." instance=ExtResource( 4 )]
+position = Vector2( 2231, 1411 )
+rotation = 0.847676
+
+[node name="Check21" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1993, 1447 )
+rotation = 1.80172
+
+[node name="Check22" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1784, 1304 )
+rotation = 2.1091
+
+[node name="Check23" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1570, 1145 )
+rotation = 2.1091
+
+[node name="Check24" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1332, 1069 )
+rotation = 1.64469
+
+[node name="Check25" parent="." instance=ExtResource( 4 )]
+position = Vector2( 985, 1099 )
+rotation = 1.18112
+
+[node name="Check26" parent="." instance=ExtResource( 4 )]
+position = Vector2( 783, 1244 )
+rotation = 1.18112
+
+[node name="Check27" parent="." instance=ExtResource( 4 )]
+position = Vector2( 507, 1334 )
+rotation = 1.48944
+
+[node name="Check28" parent="." instance=ExtResource( 4 )]
+position = Vector2( 245, 1279 )
+rotation = 1.83259
+
+[node name="Check29" parent="." instance=ExtResource( 4 )]
+position = Vector2( 24.0001, 1191 )
+rotation = 2.52873
+
+[node name="Check30" parent="." instance=ExtResource( 4 )]
+position = Vector2( -112, 1017 )
+rotation = 2.52873
+
+[node name="Check31" parent="." instance=ExtResource( 4 )]
+position = Vector2( -314, 912 )
+rotation = 1.8775
+
+[node name="Check32" parent="." instance=ExtResource( 4 )]
+position = Vector2( -497, 886 )
+rotation = 1.8775
+
+[node name="Check33" parent="." instance=ExtResource( 4 )]
+position = Vector2( -649, 681 )
+rotation = 3.10396
+
+[node name="Check34" parent="." instance=ExtResource( 4 )]
+position = Vector2( -668, 469 )
+rotation = 3.10396
+
+[node name="Check35" parent="." instance=ExtResource( 4 )]
+position = Vector2( -671, 227 )
+rotation = 3.10396
+
+[node name="Check36" parent="." instance=ExtResource( 4 )]
+position = Vector2( -704, 11 )
+rotation = 3.10396
+
+[node name="Check37" parent="." instance=ExtResource( 4 )]
+position = Vector2( -709, -163 )
+rotation = 3.10396
+
+[node name="Check38" parent="." instance=ExtResource( 4 )]
+position = Vector2( -733, -441 )
+rotation = 3.10396
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 5
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2( 1, 0 )
+polygon = PoolVector2Array( -139, -60, 184, -60, 179, 206, 227, 271, 292, 332, 370, 349, 516, 372, 662, 377, 846, 372, 1010, 362, 1126, 322, 1229, 299, 1345, 168, 1376, 44, 1450, -94, 1504, -200, 1591, -266, 1758, -306, 1897, -312, 2047, -259, 2139, -162, 2187, -51, 2235, 120, 2250, 302, 2253, 467, 2265, 620, 2253, 719, 2284, 784, 2389, 868, 2476, 964, 2545, 1140, 2505, 1324, 2344, 1497, 2134, 1593, 1920, 1556, 1764, 1446, 1591, 1299, 1431, 1159, 1229, 1140, 1046, 1147, 947, 1276, 896, 1364, 695, 1466, 484, 1485, 316, 1546, 208, 1435, 19, 1389, -91, 1254, -219, 1107, -301, 1025, -485, 1009, -612, 997, -758, 978, -774, 819, -745, 587, -777, 384, -777, 143, -1193, 54, -1124, 1843, 3165, 1783, 2905, -772, -1190, -611, -1232, 40, -894, 123, -844, -322, -613, -326, -563, -83 )
+
+[node name="CollisionShape2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( -251, -123, -108, -120, -118, 401, 35, 572, 206, 638, 620, 705, 957, 688, 1207, 635, 1428, 539, 1530, 464, 1559, 309, 1602, 147, 1631, 2, 1679, -107, 1759, -150, 1893, -126, 1962, 45, 1968, 400, 2000, 705, 2083, 835, 2205, 982, 2248, 1204, 2179, 1327, 2096, 1351, 2008, 1324, 1946, 1270, 1842, 1180, 1701, 1089, 1566, 1030, 1431, 1005, 1231, 1014, 1057, 1015, 967, 993, 878, 1046, 684, 1142, 662, 1188, 545, 1228, 467, 1254, 384, 1343, 326, 1233, 214, 1150, 126, 1065, 78, 974, -27, 878, -144, 803, -272, 782, -411, 774, -488, 747, -531, 664, -542, 574, -544, 491, -534, 392, -539, 221, -552, 16, -547, -134 )
+
+[editable path="CanvasLayer"]

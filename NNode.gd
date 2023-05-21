@@ -8,12 +8,13 @@ var value = 0
 var type :String
 
 var bias :float
+var bias_weight :float
 
 var sum :float = 0
 
 
 func activation_function(sum :float):
-	return ((sum*3) / (1 + abs(sum*3)))#+bias
+	return ((sum*3) / (1 + abs(sum*3)))+(bias*bias_weight)
 	#return tanh(sum)
 
 func calculate(inputs = []):
@@ -35,7 +36,8 @@ func mutate():
 		var change = rand_range((weight_diff*max_n *-1), weight_diff*max_p) # TODO should slowly make the max/min values less propable, rather than fully disabling it suddenly
 		weights[i] += change
 		weights[i] = clamp(weights[i],-1.0,1.0)
-	bias = rand_range(-0.1,0.1)
+	bias += rand_range(-Global.mutation_amount,-Global.mutation_amount)
+	bias = clamp(bias,-1,1)
 	
 	if not Global.use_bias:
 		bias = 0
