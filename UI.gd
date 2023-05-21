@@ -14,8 +14,6 @@ func _ready() -> void:
 	$NumberOfAI.connect("value_changed",Global,"setval",["amount_of_AI"])                      
 	Global.setval($NumberOfAI.value,"amount_of_AI")  
 	
-	$CopyBrain.connect("toggled",Global,"setval",["always_copy_brain"])                      
-	Global.setval($CopyBrain.pressed,"always_copy_brain")  
 	
 	$UseBias.connect("toggled",Global,"setval",["use_bias"])                      
 	Global.setval($UseBias.pressed,"use_bias")  

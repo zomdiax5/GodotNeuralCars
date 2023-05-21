@@ -6,15 +6,24 @@ var score :float = 0
 
 var lost :bool = false
 
-var checks = -1
+var checks = -1 # How many Checkpoints we have passed
 
-var ignore = []
+var ignore = [] # Ignore already passed checkpoints
+
+onready var cast_1: RayCast2D = $cast1
+onready var cast_2: RayCast2D = $cast2
+onready var cast_3: RayCast2D = $cast3
+onready var cast_4: RayCast2D = $cast4
+onready var cast_5: RayCast2D = $cast5
+
+var speed :float = 0.0
 
 func _ready() -> void:
 	randomize()
-	net.create_net([5,8,4,2])
+	# Create a Neural Network (NN) with 5 inputs, 1 hidden layer with 4 nodes, and 2 outputs
+	net.create_net([5,4,2]) 
 
-func map_to_value(value,maximum):
+func map_to_value(value,maximum): # Not used, maps value to -1 - 1 for use as input
 	return (value/(maximum/2))-1
 
 
@@ -30,21 +39,13 @@ func cast_distance(cast:RayCast2D):
 		return 0.0
 	return cast.global_position.distance_to(cast.get_collision_point()) / cast.cast_to.y
 
-onready var cast_1: RayCast2D = $cast1
-onready var cast_2: RayCast2D = $cast2
-onready var cast_3: RayCast2D = $cast3
-onready var cast_4: RayCast2D = $cast4
-onready var cast_5: RayCast2D = $cast5
-
-var speed :float = 0.0
-
-func reset():
+func reset(): # Reset Car
 	speed = 0.0
 	lost = false
 	checks = -1
 	ignore = [] 
 
-func move(delta :float):
+func move(delta :float):	# setup Data
 	var data = [\
 	cast_distance(cast_1),
 	cast_distance(cast_2),
@@ -52,7 +53,10 @@ func move(delta :float):
 	cast_distance(cast_4),
 	cast_distance(cast_5)
 	]
-	var result = net.calculate(data)
+	var result = net.calculate(data) # asks for output from the NN using Data as input
+	
+	# Movement
+	
 	speed += result[0]
 	speed = clamp(speed,-25,30)
 	if lost:
@@ -62,7 +66,7 @@ func move(delta :float):
 
 
 func _on_Area2D_body_shape_entered(body_rid: RID, body: Node, body_shape_index: int, local_shape_index: int) -> void:
-	if not (body is Check):
+	if not (body is Check):		# Crash if touche a wall
 		lost = true
 		
 
@@ -70,6 +74,7 @@ func _on_Area2D_body_shape_entered(body_rid: RID, body: Node, body_shape_index: 
 func _on_Area2D_area_entered(area: Area2D) -> void:
 	if not area is Check:
 		return
+	# If passed check and its not on the ignore list, increase counter
 	if not ignore.has(area):
 		checks += 1
 		ignore.append(area)
