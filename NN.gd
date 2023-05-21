@@ -32,7 +32,6 @@ func _create_node(previous_layer, type):
 		for node in range(0,previous_layer.size()):
 			new_node.weights.append(rand_range(-1,1))
 	
-	new_node.bias_weight = rand_range(-1,1)
 	new_node.bias = rand_range(-Global.default_bias,Global.default_bias)
 	if not Global.use_bias:
 		new_node.bias = 0
@@ -59,6 +58,6 @@ func calculate(inputs := []):
 
 func mutate():
 	for l in range(0,neural_net.size()):
-		for node in neural_net[l]:
-			node.mutate()
-
+		for node in range(0,neural_net[l].size()):
+			if (neural_net[l][node].weights.size() > 0):
+				neural_net[l][node].mutate()

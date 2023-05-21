@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-onready var net :NN = $NN
+var net :NN = NN.new()
 
 var score :float = 0
 
@@ -12,7 +12,7 @@ var ignore = []
 
 func _ready() -> void:
 	randomize()
-	net.create_net([5,3,2])
+	net.create_net([5,8,4,2])
 
 func map_to_value(value,maximum):
 	return (value/(maximum/2))-1
@@ -54,11 +54,11 @@ func move(delta :float):
 	]
 	var result = net.calculate(data)
 	speed += result[0]
-	speed = clamp(speed,-25,42)
+	speed = clamp(speed,-25,30)
 	if lost:
 		return
 	move_and_slide(Vector2(speed,0).rotated(rotation)*10)
-	rotation_degrees += result[1]*4.5
+	rotation_degrees += result[1]*3*(1+(Global.timescale/2))
 
 
 func _on_Area2D_body_shape_entered(body_rid: RID, body: Node, body_shape_index: int, local_shape_index: int) -> void:

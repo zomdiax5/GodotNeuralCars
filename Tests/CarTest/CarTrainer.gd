@@ -24,7 +24,7 @@ func setup():
 
 func _physics_process(delta:float):
 	Engine.time_scale = Global.timescale
-	if timer > 20:
+	if timer > 30:
 		next_run()
 		timer = 0
 	timer+=delta
@@ -45,21 +45,36 @@ func restart():
 
 func next_run():
 	run += 1
-	var best_score = -999999999999
-	var best_node = null
-
-	for node in get_children():
-		var score = calculate_score(node)
-		if score > best_score or best_node == null:
+	
+	var nodes = []
+	
+	var best_score :float = -99999999
+	
+	var children = get_children()
+	
+	for node in range(0,children.size()):
+		nodes.append({"node":children[node]})
+		var score = calculate_score(children[node])
+		nodes[node]["score"] = score
+		children[node].global_position = Vector2(0,0)
+		children[node].rotation_degrees = 90
+		if score > best_score:
 			best_score = score
-			best_node = node
-		node.global_position = Vector2(0,0)
-		node.rotation_degrees = 90
-
+	
+	nodes.sort_custom(self,"bigger_score")
+	
 	for node in get_children():
-		if (rand_range(0,100) < Global.mutation_chance or Global.always_copy_brain) and node != best_node:
-			node.net.neural_net = null 
-			node.net.neural_net = best_node.net.neural_net.duplicate(true)
+		var other_node = null
+		while true:
+			other_node = nodes[int(rand_range(0,min(nodes.size(),nodes.size()/15)))]
+			if (other_node["node"] != node):
+				break
+		for l in range(0,node.net.neural_net.size()):
+			for n in range(0,node.net.neural_net[l].size()):
+				node.net.neural_net[l][n].weights = other_node["node"].net.neural_net[l][n].weights.duplicate(true)
+				node.net.neural_net[l][n].bias = other_node["node"].net.neural_net[l][n].bias
+		
+		if rand_range(0,100) < Global.mutation_chance: 
 			node.net.mutate()
 
 
@@ -70,12 +85,15 @@ func next_run():
 	reset_world()
 
 
+func bigger_score(a,b):
+	return a["score"] > b["score"]
+
 func reset_world():
 	pass
 
 func calculate_score(node :Node2D):
 	var score
-	score = node.checks * 200 + node.global_position.distance_to(
+	score = node.checks * 400 + node.global_position.distance_to(
 		get_tree().get_nodes_in_group("Check")[node.checks].global_position
 	)
 	node.reset()

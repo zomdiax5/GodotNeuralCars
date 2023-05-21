@@ -3,6 +3,8 @@ extends Node
 var mutation_amount :float = 0.001
 var mutation_chance :float = 50
 
+var rand: int = 0
+
 var timescale :float = 1.0
 
 var amount_of_AI :int = 100
